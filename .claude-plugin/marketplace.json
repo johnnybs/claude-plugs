@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "pr-pilot",
-      "source": "./",
+      "source": "./plugins/pr-pilot",
       "description": "Drives a change from idea to merged PR: clarify, plan, worktree, implement, test, open PR, wait on CI, fix, merge."
     }
   ]
