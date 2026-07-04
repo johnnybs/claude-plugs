@@ -1,0 +1,9 @@
+{
+  "name": "pr-pilot",
+  "version": "1.0.0",
+  "description": "Drives a change from an idea all the way to a merged PR: clarifies ambiguities, plans, works in an isolated worktree/branch, implements, tests, opens the PR, waits on CI (fixing failures), and merges.",
+  "author": {
+    "name": "johnnybs"
+  },
+  "keywords": ["pr", "workflow", "worktree", "ci", "automation", "git"]
+}

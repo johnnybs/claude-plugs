@@ -1,0 +1,16 @@
+{
+  "name": "pr-pilot-marketplace",
+  "owner": {
+    "name": "johnnybs"
+  },
+  "metadata": {
+    "description": "Marketplace hosting the pr-pilot plugin."
+  },
+  "plugins": [
+    {
+      "name": "pr-pilot",
+      "source": "./",
+      "description": "Drives a change from idea to merged PR: clarify, plan, worktree, implement, test, open PR, wait on CI, fix, merge."
+    }
+  ]
+}
