@@ -1,0 +1,9 @@
+{
+  "name": "game-dev-agents",
+  "version": "1.0.0",
+  "description": "Game-development subagents: engine-agnostic game-design and game-feel advisors, plus Ebiten/Go-specific gameplay-systems (ECS/data-oriented), shader-graphics (Kage, batching), and audio advisors.",
+  "author": {
+    "name": "johnnybs"
+  },
+  "keywords": ["agents", "game-development", "game-design", "game-feel", "ecs", "ebiten", "golang", "graphics", "audio"]
+}

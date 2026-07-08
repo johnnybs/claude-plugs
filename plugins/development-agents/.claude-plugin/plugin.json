@@ -1,9 +1,9 @@
 {
   "name": "development-agents",
-  "version": "1.2.0",
-  "description": "A collection of coding-focused subagents: architecture, clean-code, performance, and debugger reviewers, a web-research agent, engine-agnostic game-design and game-feel advisors, and Ebiten/Go-specific gameplay-systems (ECS), shader-graphics, and audio advisors.",
+  "version": "2.0.0",
+  "description": "A collection of general coding-focused subagents: architecture and clean-code reviewers, a performance analyst, a debugger/root-cause investigator, and a web-research agent. Game-specific agents live in the companion game-dev-agents plugin.",
   "author": {
     "name": "johnnybs"
   },
-  "keywords": ["agents", "architecture", "clean-code", "performance", "debugger", "code-review", "research", "game-development", "ecs", "ebiten", "golang", "development"]
+  "keywords": ["agents", "architecture", "clean-code", "performance", "debugger", "code-review", "research", "development"]
 }
