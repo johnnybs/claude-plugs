@@ -15,7 +15,12 @@
     {
       "name": "development-agents",
       "source": "./plugins/development-agents",
-      "description": "Coding-focused subagents: architecture, clean-code, performance, and debugger reviewers, a web-research agent, engine-agnostic game-design and game-feel advisors, and Ebiten/Go gameplay-systems (ECS), shader-graphics, and audio advisors."
+      "description": "General coding-focused subagents: architecture and clean-code reviewers, a performance analyst, a debugger/root-cause investigator, and a web-research agent."
+    },
+    {
+      "name": "game-dev-agents",
+      "source": "./plugins/game-dev-agents",
+      "description": "Game-development subagents: engine-agnostic game-design and game-feel advisors, plus Ebiten/Go gameplay-systems (ECS), shader-graphics (Kage), and audio advisors."
     }
   ]
 }
