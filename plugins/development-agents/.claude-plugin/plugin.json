@@ -1,9 +1,9 @@
 {
   "name": "development-agents",
-  "version": "2.0.0",
-  "description": "A collection of general coding-focused subagents: architecture and clean-code reviewers, a performance analyst, a debugger/root-cause investigator, and a web-research agent. Game-specific agents live in the companion game-dev-agents plugin.",
+  "version": "2.1.0",
+  "description": "A collection of general coding-focused subagents: read-only architecture, clean-code, performance, debugger, and web-research advisors, plus scoped write-capable test-writer and docs-writer agents. Game-specific agents live in the companion game-dev-agents plugin.",
   "author": {
     "name": "johnnybs"
   },
-  "keywords": ["agents", "architecture", "clean-code", "performance", "debugger", "code-review", "research", "development"]
+  "keywords": ["agents", "architecture", "clean-code", "performance", "debugger", "test-writer", "docs-writer", "code-review", "research", "development"]
 }

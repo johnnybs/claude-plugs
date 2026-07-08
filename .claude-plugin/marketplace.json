@@ -15,7 +15,7 @@
     {
       "name": "development-agents",
       "source": "./plugins/development-agents",
-      "description": "General coding-focused subagents: architecture and clean-code reviewers, a performance analyst, a debugger/root-cause investigator, and a web-research agent."
+      "description": "General coding-focused subagents: read-only architecture, clean-code, performance, debugger, and web-research advisors, plus scoped write-capable test-writer and docs-writer agents."
     },
     {
       "name": "game-dev-agents",

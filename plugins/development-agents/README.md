@@ -1,8 +1,12 @@
 # development-agents
 
-A Claude Code plugin bundling a set of general coding-focused **subagents** you can dispatch during development. Each one is read-only and returns a focused report — they investigate and advise; they don't edit your code. For game-specific agents, see the companion [`game-dev-agents`](../game-dev-agents) plugin.
+A Claude Code plugin bundling a set of general coding-focused **subagents** you can dispatch during development. Most are read-only advisors that investigate and return a focused report; two (`test-writer`, `docs-writer`) are write-capable but tightly scoped. For game-specific agents, see the companion [`game-dev-agents`](../game-dev-agents) plugin.
 
 ## Agents
+
+### Analysis (read-only)
+
+These investigate and advise — they never edit your code.
 
 | Agent | Focus | Use it when |
 | --- | --- | --- |
@@ -13,6 +17,15 @@ A Claude Code plugin bundling a set of general coding-focused **subagents** you 
 | `websearch` | Coding-focused web research — library/API docs, error messages, version differences, and current best practices, with sources. | Answering the task correctly needs up-to-date external information the codebase can't provide. |
 
 The `architecture` and `clean-code` agents are deliberately complementary: architecture works top-down on structure, clean-code works bottom-up on readability. Reach for both on a substantial change.
+
+### Authoring (write files, scoped)
+
+These edit files, but each stays inside a hard boundary and reports anything outside it rather than touching it.
+
+| Agent | Focus | Writes | Use it when |
+| --- | --- | --- | --- |
+| `test-writer` | Writes tests matching the repo's framework/conventions and iterates until they pass. The "do" counterpart to `debugger`. | Test files only (never production code). | You want real coverage added for a function, module, change, or bug fix. |
+| `docs-writer` | Writes/updates doc comments, READMEs, and API docs grounded in the actual code. | Doc comments/docstrings and doc/markdown files only (never logic). | Docs are missing, stale, or need to reflect a change. |
 
 ## Requirements
 
@@ -58,6 +71,8 @@ Use the architecture agent to review how the payments module is organized.
 Have the clean-code agent look over the functions in src/parser.ts.
 Ask the performance agent why the render loop drops frames on big levels.
 Have the debugger agent root-cause the crash in this stack trace.
+Have the test-writer agent add tests for the new discount logic.
+Ask the docs-writer agent to document the exported functions in this package.
 ```
 
 The agents are prefixed with the plugin name when dispatched (e.g. `development-agents:architecture`).
@@ -71,4 +86,6 @@ The agents are prefixed with the plugin name when dispatched (e.g. `development-
 | `agents/performance.md` | Finds hot paths, allocations, GC pressure, and frame-budget offenders — measured and prioritized. |
 | `agents/debugger.md` | Root-causes a bug/crash/failing test and points to the fix, with evidence. |
 | `agents/websearch.md` | Researches coding questions on the web and returns sourced answers. |
+| `agents/test-writer.md` | Writes tests (test files only) matching repo conventions and runs them to green. |
+| `agents/docs-writer.md` | Writes/updates doc comments and docs (documentation only) grounded in the code. |
 | `.claude-plugin/plugin.json` | Plugin manifest. |
