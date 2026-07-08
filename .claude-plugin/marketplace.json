@@ -15,7 +15,7 @@
     {
       "name": "development-agents",
       "source": "./plugins/development-agents",
-      "description": "Coding-focused subagents: an architecture reviewer for high-level design and code organization, a clean-code reviewer for function/naming/readability quality, and a web-research agent for coding questions."
+      "description": "Coding-focused subagents: architecture, clean-code, performance, and debugger reviewers, a web-research agent, plus game-design and game-feel advisors for game development."
     }
   ]
 }

@@ -1,9 +1,9 @@
 {
   "name": "development-agents",
-  "version": "1.0.0",
-  "description": "A collection of coding-focused subagents: an architecture reviewer for systems and high-level design, a clean-code reviewer for function/naming/readability quality, and a web-research agent for coding questions.",
+  "version": "1.1.0",
+  "description": "A collection of coding-focused subagents: architecture, clean-code, performance, and debugger reviewers, a web-research agent, plus game-design and game-feel advisors for game development.",
   "author": {
     "name": "johnnybs"
   },
-  "keywords": ["agents", "architecture", "clean-code", "code-review", "research", "development"]
+  "keywords": ["agents", "architecture", "clean-code", "performance", "debugger", "code-review", "research", "game-development", "development"]
 }
