@@ -18,7 +18,7 @@ The `architecture` and `clean-code` agents are deliberately complementary: archi
 
 ### Game development
 
-Engine-agnostic — they reason about the design and the parameters behind it, not any one framework's API.
+`game-design` and `game-feel` are engine-agnostic — they reason about the design and the parameters behind it, not any one framework's API.
 
 | Agent | Focus | Use it when |
 | --- | --- | --- |
@@ -26,6 +26,14 @@ Engine-agnostic — they reason about the design and the parameters behind it, n
 | `game-feel` | Game feel and "juice" — input responsiveness, control tuning, feedback (visual/audio/haptic), animation, and camera. | Something works but feels floaty, mushy, unresponsive, or flat, and you want it tight and satisfying. |
 
 `game-design` is about whether the rules are *fun and fair*; `game-feel` is about whether the same action *feels good to touch*. They pair well.
+
+The next three are **Ebiten/Go-specific** — they know Ebiten's rendering, audio, and update-loop APIs.
+
+| Agent | Focus | Use it when |
+| --- | --- | --- |
+| `gameplay-systems` | ECS and data-oriented gameplay architecture — entity/component/system boundaries, storage, system scheduling, and the `Update` loop. | You're structuring how entities, components, and systems fit together, or moving ad-hoc game objects toward ECS. |
+| `shader-graphics` | 2D rendering and Kage shaders — draw-call batching, texture atlases, the `DrawImage`/`DrawTriangles` pipeline, blend modes, and offscreen targets. | Rendering is slow or looks wrong, or you're writing/optimizing a Kage shader or effect. |
+| `audio` | Ebiten audio — the `audio.Context` lifecycle, players, decoding/streaming, looping, mixing, and avoiding per-frame allocations. | You're adding sound/music, audio glitches or lags, or many concurrent sounds need managing. |
 
 ## Requirements
 
@@ -73,6 +81,9 @@ Ask the performance agent why the render loop drops frames on big levels.
 Have the debugger agent root-cause the crash in this stack trace.
 Ask the game-design agent whether the upgrade curve ramps too fast.
 Have the game-feel agent tell me why the jump feels floaty.
+Ask the gameplay-systems agent how to move my entities to ECS.
+Have the shader-graphics agent find why my sprites aren't batching.
+Ask the audio agent why sound effects stutter when many fire at once.
 ```
 
 The agents are prefixed with the plugin name when dispatched (e.g. `development-agents:architecture`).
@@ -88,4 +99,7 @@ The agents are prefixed with the plugin name when dispatched (e.g. `development-
 | `agents/websearch.md` | Researches coding questions on the web and returns sourced answers. |
 | `agents/game-design.md` | Advises on mechanics, balance, progression, and economy. |
 | `agents/game-feel.md` | Advises on input responsiveness, feedback/juice, animation, and camera feel. |
+| `agents/gameplay-systems.md` | Advises on ECS and data-oriented gameplay architecture for Ebiten/Go. |
+| `agents/shader-graphics.md` | Advises on Ebiten 2D rendering, batching, and Kage shaders. |
+| `agents/audio.md` | Advises on Ebiten audio: context, players, decoding, looping, and mixing. |
 | `.claude-plugin/plugin.json` | Plugin manifest. |
