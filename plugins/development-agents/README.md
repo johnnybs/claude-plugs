@@ -23,11 +23,11 @@ The `architecture` and `clean-code` agents are deliberately complementary: archi
 ```bash
 # From the GitHub repo
 claude plugin marketplace add johnnybs/claude-plugs
-claude plugin install development-agents@pr-pilot-marketplace
+claude plugin install development-agents@claude-plugs
 
 # ...or from a local clone
 claude plugin marketplace add /path/to/claude-plugs
-claude plugin install development-agents@pr-pilot-marketplace
+claude plugin install development-agents@claude-plugs
 ```
 
 Useful management commands:

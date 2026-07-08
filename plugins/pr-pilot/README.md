@@ -28,11 +28,11 @@ Add the marketplace and install the plugin without starting an interactive sessi
 ```bash
 # From the GitHub repo
 claude plugin marketplace add johnnybs/claude-plugs
-claude plugin install pr-pilot@pr-pilot-marketplace
+claude plugin install pr-pilot@claude-plugs
 
 # ...or from a local clone
 claude plugin marketplace add /path/to/claude-plugs
-claude plugin install pr-pilot@pr-pilot-marketplace
+claude plugin install pr-pilot@claude-plugs
 ```
 
 Useful management commands:
@@ -41,10 +41,10 @@ Useful management commands:
 claude plugin list                      # show installed plugins
 claude plugin update pr-pilot           # pull the latest version
 claude plugin uninstall pr-pilot        # remove it
-claude plugin marketplace remove pr-pilot-marketplace
+claude plugin marketplace remove claude-plugs
 ```
 
-The plugin name is `pr-pilot`; the marketplace it comes from is `pr-pilot-marketplace` (defined in `.claude-plugin/marketplace.json`).
+The plugin name is `pr-pilot`; the marketplace it comes from is `claude-plugs` (defined in `.claude-plugin/marketplace.json`).
 
 ### From within Claude Code
 
