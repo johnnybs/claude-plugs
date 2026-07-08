@@ -4,13 +4,18 @@
     "name": "johnnybs"
   },
   "metadata": {
-    "description": "Marketplace hosting the pr-pilot plugin."
+    "description": "Marketplace hosting Claude Code plugins by johnnybs."
   },
   "plugins": [
     {
       "name": "pr-pilot",
       "source": "./plugins/pr-pilot",
       "description": "Drives a change from idea to merged PR: clarify, plan, worktree, implement, test, open PR, wait on CI, fix, merge."
+    },
+    {
+      "name": "development-agents",
+      "source": "./plugins/development-agents",
+      "description": "Coding-focused subagents: an architecture reviewer for high-level design and code organization, a clean-code reviewer for function/naming/readability quality, and a web-research agent for coding questions."
     }
   ]
 }

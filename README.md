@@ -7,6 +7,7 @@ A [Claude Code](https://claude.com/claude-code) plugin marketplace. Each plugin 
 | Plugin | Description |
 | --- | --- |
 | [`pr-pilot`](plugins/pr-pilot) | Drives a task from idea to a merged PR: clarify ambiguities, plan, worktree, implement, test, open the PR, wait on CI (fixing failures), and merge. |
+| [`development-agents`](plugins/development-agents) | Coding-focused subagents: an `architecture` reviewer for high-level design and code organization, a `clean-code` reviewer for function/naming/readability quality, and a `websearch` agent for coding research. |
 
 ## Install
 
