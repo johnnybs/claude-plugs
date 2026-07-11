@@ -1,0 +1,9 @@
+{
+  "name": "orchestration",
+  "version": "1.0.0",
+  "description": "Teaches the main agent to orchestrate its subagents well: when to delegate versus do it inline, how to write self-contained delegation prompts, how to parallelize safely, how to pick the right agent, and how to reconcile and verify what comes back.",
+  "author": {
+    "name": "johnnybs"
+  },
+  "keywords": ["orchestration", "subagents", "delegation", "parallelism", "agents", "workflow", "context"]
+}

@@ -9,6 +9,7 @@ A [Claude Code](https://claude.com/claude-code) plugin marketplace. Each plugin 
 | [`pr-pilot`](plugins/pr-pilot) | Drives a task from idea to a merged PR: clarify ambiguities, plan, worktree, implement, test, open the PR, wait on CI (fixing failures), and merge. |
 | [`development-agents`](plugins/development-agents) | General coding-focused subagents — read-only `architecture`, `clean-code`, `performance`, `debugger`, `websearch`, plus scoped write-capable `test-writer` and `docs-writer`. |
 | [`game-dev-agents`](plugins/game-dev-agents) | Game-development subagents — engine-agnostic `game-design` and `game-feel`, plus Ebiten/Go `gameplay-systems` (ECS), `shader-graphics`, and `audio`. |
+| [`orchestration`](plugins/orchestration) | The `orchestrator` skill — teaches the main agent to control its subagents: when to delegate, self-contained delegation prompts, safe parallelism, agent selection, and reconciling results. |
 
 ## Install
 
