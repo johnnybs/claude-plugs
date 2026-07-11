@@ -21,6 +21,11 @@
       "name": "game-dev-agents",
       "source": "./plugins/game-dev-agents",
       "description": "Game-development subagents: engine-agnostic game-design and game-feel advisors, plus Ebiten/Go gameplay-systems (ECS), shader-graphics (Kage), and audio advisors."
+    },
+    {
+      "name": "orchestration",
+      "source": "./plugins/orchestration",
+      "description": "Teaches the main agent to orchestrate subagents well: when to delegate versus do it inline, self-contained delegation prompts, safe parallelism, picking the right agent, and reconciling what comes back."
     }
   ]
 }
