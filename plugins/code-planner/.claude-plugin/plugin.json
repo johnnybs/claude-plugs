@@ -1,0 +1,9 @@
+{
+  "name": "code-planner",
+  "version": "1.0.0",
+  "description": "Turns a coding task into a concrete, saved implementation plan: grounds the task in the codebase, hunts and resolves ambiguities, asks only the questions that need a human, and writes a reviewable plan file that other workflows (like pr-pilot's /ship) can pick up.",
+  "author": {
+    "name": "johnnybs"
+  },
+  "keywords": ["planning", "plan", "code", "ambiguity", "spec", "workflow"]
+}

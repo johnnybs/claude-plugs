@@ -4,18 +4,18 @@ A Claude Code plugin that drives a task all the way from an idea to a **merged p
 
 Given a task, it will:
 
-1. **Clarify** — read any linked issue/ticket, explore the codebase, hunt for ambiguities, answer everything it can from the code, and ask you only the questions that genuinely need a human decision.
-2. **Plan** — propose a concrete approach and get your sign-off.
-3. **Isolate** — create a dedicated git **worktree + branch** so your main checkout is never touched.
-4. **Implement** — make the change following the repo's conventions, with tests.
-5. **Test locally** — run the repo's tests/lint/build and fix failures before spending CI minutes.
-6. **Open the PR** — push and open a PR with a real description via `gh`.
-7. **Watch CI** — poll the checks, pull failing logs, fix, and push again until green.
-8. **Merge** — merge (with your confirmation) and clean up the worktree.
+1. **Plan** — delegate to the [code-planner](../code-planner) `/plan` skill: read any linked issue/ticket, explore the codebase, hunt for ambiguities, answer what it can from the code, ask you only the genuine human questions, and save a plan to `.plans/<slug>.md`. If a plan already exists for the task, `/ship` reuses it and **skips planning**.
+2. **Isolate** — create a dedicated git **worktree + branch** so your main checkout is never touched.
+3. **Implement** — make the change following the repo's conventions, with tests.
+4. **Test locally** — run the repo's tests/lint/build and fix failures before spending CI minutes.
+5. **Open the PR** — push and open a PR with a real description via `gh`.
+6. **Watch CI** — poll the checks, pull failing logs, fix, and push again until green.
+7. **Merge** — merge (with your confirmation) and clean up the worktree.
 
 ## Requirements
 
 - [Claude Code](https://claude.com/claude-code)
+- The [**code-planner**](../code-planner) plugin — pr-pilot delegates its planning phase to code-planner's `/plan` skill (and its `ambiguity-hunter` agent lives there). Install it alongside pr-pilot: `claude plugin install code-planner@claude-plugs`.
 - `git` with worktree support
 - The GitHub CLI (`gh`), authenticated: `gh auth login`
 
@@ -78,16 +78,29 @@ Examples:
 /ship https://linear.app/acme/issue/ENG-123
 ```
 
-The plugin will pause for your input at two points by design: when it has genuine open questions after planning, and before it merges (unless you tell it up front to auto-merge, e.g. `/ship ... and merge automatically once CI is green`).
+### Plan first, ship later
+
+Because planning is delegated to [code-planner](../code-planner), you can split the two:
+
+```
+/plan add rate limiting to the /login endpoint, 5 attempts per minute   # writes .plans/rate-limit-login.md
+# ...review/edit the plan...
+/ship add rate limiting to the /login endpoint, 5 attempts per minute   # finds the plan, skips planning, builds & ships
+```
+
+Or point `/ship` straight at a plan file: `/ship .plans/rate-limit-login.md`. Run `/ship <task>` cold and it plans for you first.
+
+The plugin will pause for your input at two points by design: when planning has genuine open questions, and before it merges (unless you tell it up front to auto-merge, e.g. `/ship ... and merge automatically once CI is green`).
 
 ## What's inside
 
 | File | Purpose |
 | --- | --- |
-| `commands/ship.md` | The `/ship` slash command — the end-to-end orchestration workflow. |
-| `agents/ambiguity-hunter.md` | A read-only subagent that grounds the task in the codebase and surfaces the ambiguities to resolve before coding. |
+| `commands/ship.md` | The `/ship` slash command — the end-to-end shipping workflow (delegates planning to code-planner). |
 | `.claude-plugin/plugin.json` | Plugin manifest. |
 | `.claude-plugin/marketplace.json` | Marketplace descriptor so the repo is installable directly. |
+
+Planning lives in the separate [code-planner](../code-planner) plugin (the `/plan` skill and the `ambiguity-hunter` agent).
 
 ## Notes & safety
 

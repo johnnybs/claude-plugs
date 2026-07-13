@@ -33,19 +33,21 @@ Work through the phases in order. Do not skip phases.
 3. Check working tree state: `git status --porcelain`. If there are uncommitted changes, ask the user whether to include them, stash them, or abort. Don't silently discard work.
 4. Identify the base branch (usually `main` or `master`): `git symbolic-ref refs/remotes/origin/HEAD --short 2>/dev/null` or fall back to the current default. Make sure it's up to date: `git fetch origin`.
 
-## Phase 1 — Understand & clarify (the "find and answer ambiguities" phase)
+## Phase 1 — Plan (delegated to code-planner)
 
-1. If the task references a ticket/issue (e.g. `#123`, a Linear ID, a URL), fetch its contents (`gh issue view`, WebFetch, or the relevant tool) and read it fully.
-2. **Explore the codebase** to ground the task in reality: locate the relevant files, existing patterns, tests, and conventions. For anything beyond a trivial change, dispatch the **`ambiguity-hunter`** agent via Task — it returns task grounding, pre-resolved ambiguities (with evidence), and a short list of genuine open questions. For small changes, do this inline with Grep/Glob/Read.
-3. **Hunt for ambiguities.** From that exploration, enumerate what's underspecified: unclear scope, edge cases, competing approaches, naming, backward-compat, migration, config, where new code should live, what "done" means, how it should be tested.
-4. **Resolve them in this order:**
-   - Answer from the codebase, docs, and conventions wherever you can — don't ask the user things you can determine yourself.
-   - For the ones that genuinely need a human decision (material trade-offs, product choices, anything hard to reverse), batch them into `AskUserQuestion` (offer sensible defaults, mark a recommended option first). Ask these **before** writing the plan.
-5. Write a concrete **plan**: the approach, the files you'll touch, the test strategy, and how you'll verify. Present it to the user and get a thumbs-up before implementing. Keep it tight — this is a plan to act on, not an essay.
+Planning is owned by the **code-planner** plugin, not by this workflow. `/ship` either reuses an existing plan or produces one via `/plan`, then implements against it. Plans live at `.plans/<slug>.md`.
+
+1. **Look for an existing plan.**
+   - If the user pointed at a specific plan file (e.g. `/ship .plans/rate-limit-login.md`), use that.
+   - Otherwise derive the same kebab-case **slug** the planner would from the task, and check for `.plans/<slug>.md`. If the task is empty and one or more plans exist under `.plans/`, list them and ask the user which to ship.
+2. **If a plan exists:** read it fully. Confirm with the user in one line that you're shipping this plan (show its path and goal), then **skip straight to Phase 2** — do not re-plan. If it's clearly stale relative to the current code, say so and offer to re-run planning.
+3. **If no plan exists:** run the planning workflow now by invoking the **`code-planner` `/plan` skill** with this task (via the Skill tool). It will ground the task, resolve ambiguities, ask you any genuine open questions, and write `.plans/<slug>.md`. Once it reports a saved plan, read that file and continue.
+   - If the `code-planner` plugin/`/plan` skill isn't available, tell the user it's a dependency (`claude plugin install code-planner@claude-plugs`) and, with their okay, fall back to planning inline here: explore the codebase (dispatch the `ambiguity-hunter` agent if installed), resolve ambiguities, ask only genuine human questions via `AskUserQuestion`, and write the plan to `.plans/<slug>.md` in the same format before proceeding.
+4. Get the user's thumbs-up on the plan before implementing.
 
 ## Phase 2 — Isolated worktree + branch
 
-1. Choose a descriptive branch name: `pr-pilot/<short-kebab-summary>` (or match the repo's existing branch naming convention if there is one).
+1. Use the plan's **Suggested branch** (or its slug) as the branch name; otherwise choose a descriptive `pr-pilot/<short-kebab-summary>`. Either way, match the repo's existing branch naming convention if there is one.
 2. Create a worktree so the main checkout is untouched. Put it beside the repo, not inside it:
    ```bash
    REPO_ROOT="$(git rev-parse --show-toplevel)"
