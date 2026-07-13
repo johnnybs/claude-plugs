@@ -1,7 +1,7 @@
 {
   "name": "pr-pilot",
   "version": "1.0.0",
-  "description": "Drives a change from an idea all the way to a merged PR: clarifies ambiguities, plans, works in an isolated worktree/branch, implements, tests, opens the PR, waits on CI (fixing failures), and merges.",
+  "description": "Drives a change from an idea all the way to a merged PR: delegates planning to the code-planner plugin (reusing a saved plan when one exists), then works in an isolated worktree/branch, implements, tests, opens the PR, waits on CI (fixing failures), and merges.",
   "author": {
     "name": "johnnybs"
   },

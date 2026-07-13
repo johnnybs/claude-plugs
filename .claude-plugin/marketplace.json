@@ -8,9 +8,14 @@
   },
   "plugins": [
     {
+      "name": "code-planner",
+      "source": "./plugins/code-planner",
+      "description": "Turns a coding task into a concrete, saved implementation plan: grounds it in the codebase, resolves ambiguities, asks only what needs a human, and writes a reviewable .plans/<slug>.md that other workflows can pick up."
+    },
+    {
       "name": "pr-pilot",
       "source": "./plugins/pr-pilot",
-      "description": "Drives a change from idea to merged PR: clarify, plan, worktree, implement, test, open PR, wait on CI, fix, merge."
+      "description": "Drives a change from idea to merged PR: delegates planning to code-planner, then worktree, implement, test, open PR, wait on CI, fix, merge."
     },
     {
       "name": "development-agents",
