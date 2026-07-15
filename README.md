@@ -53,3 +53,7 @@ claude plugin marketplace remove claude-plugs
 3. Commit and push.
 
 See [`plugins/pr-pilot`](plugins/pr-pilot) for a working example.
+
+## License
+
+Released under the [MIT License](LICENSE).
